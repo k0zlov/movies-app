@@ -1,0 +1,3 @@
+class AppPalette {
+  AppPalette._();
+}
