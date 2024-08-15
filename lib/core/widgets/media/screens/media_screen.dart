@@ -5,8 +5,11 @@ import 'package:movies_app/core/widgets/media/media_screen/info_container.dart';
 class MediaScreen extends StatelessWidget {
   const MediaScreen({
     super.key,
+    required this.body,
     required this.data,
   });
+
+  final Widget body;
 
   final MediaContainerData data;
 
@@ -18,7 +21,10 @@ class MediaScreen extends StatelessWidget {
           child: Stack(
             children: [
               const MediaBackdrop(),
-              MediaScreenBody(data: data),
+              MediaScreenBody(
+                body: body,
+                data: data,
+              ),
             ],
           ),
         ),
@@ -30,8 +36,11 @@ class MediaScreen extends StatelessWidget {
 class MediaScreenBody extends StatelessWidget {
   const MediaScreenBody({
     super.key,
+    required this.body,
     required this.data,
   });
+
+  final Widget body;
 
   final MediaContainerData data;
 
@@ -39,14 +48,19 @@ class MediaScreenBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(
-        left: 40,
         top: 80,
       ),
       child: Column(
         children: [
-          MediaInfoContainer(
-            data: data,
+          Padding(
+            padding: const EdgeInsets.only(left: 40),
+            child: MediaInfoContainer(
+              data: data,
+            ),
           ),
+          const SizedBox(height: 60),
+          body,
+          const SizedBox(height: 60),
         ],
       ),
     );

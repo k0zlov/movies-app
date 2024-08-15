@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:movies_app/core/widgets/animations/hover_scale_animation.dart';
 
 class ExpandedNavBarTextButton extends StatelessWidget {
   const ExpandedNavBarTextButton({
@@ -22,26 +23,28 @@ class ExpandedNavBarTextButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CupertinoButton(
-      onPressed: onPressed,
-      padding: EdgeInsets.zero,
-      child: Row(
-        children: [
-          if (selected && showChevron) ...{
-            const Icon(
-              CupertinoIcons.chevron_down,
-              size:  12,
-              color: CupertinoColors.white,
+    return HoverScaleAnimation(
+      child: CupertinoButton(
+        onPressed: onPressed,
+        padding: EdgeInsets.zero,
+        child: Row(
+          children: [
+            if (selected && showChevron) ...{
+              const Icon(
+                CupertinoIcons.chevron_down,
+                size:  12,
+                color: CupertinoColors.white,
+              ),
+            },
+            const SizedBox(width: 4),
+            Text(
+              text,
+              style: textStyle.copyWith(
+                fontWeight: selected ? FontWeight.w800 : FontWeight.w200,
+              ),
             ),
-          },
-          const SizedBox(width: 4),
-          Text(
-            text,
-            style: textStyle.copyWith(
-              fontWeight: selected ? FontWeight.w800 : FontWeight.w200,
-            ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

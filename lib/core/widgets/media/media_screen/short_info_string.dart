@@ -22,18 +22,22 @@ class ShortMediaInfoString extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        ImdbLogoButton(onPressed: () {}),
-        Text(data.imdbRating.toStringAsFixed(1)),
-        if (data.additionalInfo.isNotEmpty) const Text('  ·  '),
-        for (int i = 0; i < data.additionalInfo.length; i++) ...{
-          Text(data.additionalInfo[i]),
-          if (i + 1 != data.additionalInfo.length) ...{
-            const Text('  ·  '),
+    return DefaultTextStyle(
+      style: CupertinoTheme.of(context).textTheme.textStyle,
+      child: Row(
+        children: [
+          ImdbLogoButton(onPressed: () {}),
+          const SizedBox(width: 2),
+          Text(data.imdbRating.toStringAsFixed(1)),
+          if (data.additionalInfo.isNotEmpty) const Text('  ·  '),
+          for (int i = 0; i < data.additionalInfo.length; i++) ...{
+            Text(data.additionalInfo[i]),
+            if (i + 1 != data.additionalInfo.length) ...{
+              const Text('  ·  '),
+            },
           },
-        },
-      ],
+        ],
+      ),
     );
   }
 }

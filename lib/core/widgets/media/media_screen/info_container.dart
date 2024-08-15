@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
-import 'package:movies_app/core/resources/images.dart';
 import 'package:movies_app/core/widgets/media/media_screen/genres_string.dart';
+import 'package:movies_app/core/widgets/media/media_screen/media_description.dart';
+import 'package:movies_app/core/widgets/media/media_screen/media_logo.dart';
 import 'package:movies_app/core/widgets/media/media_screen/options_row.dart';
 import 'package:movies_app/core/widgets/media/media_screen/short_info_string.dart';
 
@@ -41,23 +42,11 @@ class MediaInfoContainer extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.end,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Image.asset(
-            AppImages.arcaneLogo,
-            height: 85,
-            fit: BoxFit.scaleDown,
-          ),
+          const MediaLogo(),
           const SizedBox(height: 14),
           ShortMediaInfoString(data: data.shortMediaStringData),
           const SizedBox(height: 14),
-          SizedBox(
-            width: 450,
-            child: Text(
-              data.description,
-              softWrap: true,
-              overflow: TextOverflow.ellipsis,
-              maxLines: 6,
-            ),
-          ),
+          MediaDescription(data.description),
           const SizedBox(height: 40),
           MediaOptionsRow(isAdult: data.isAdult),
           const SizedBox(height: 14),
