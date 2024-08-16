@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:movies_app/core/widgets/animations/hover_scale_animation.dart';
+import 'package:movies_app/core/widgets/animations/hover/hover_scale_animation.dart';
 
 class ImdbLogoButton extends StatelessWidget {
   const ImdbLogoButton({
@@ -24,7 +24,8 @@ class ImdbLogoButton extends StatelessWidget {
           decoration: TextDecoration.underline,
         );
 
-    return HoverScaleAnimation(
+    return HoverAnimation(
+      scaleAnimation: true,
       child: CupertinoButton(
         padding: EdgeInsets.zero,
         onPressed: onPressed,
@@ -34,9 +35,11 @@ class ImdbLogoButton extends StatelessWidget {
             color: CupertinoColors.systemYellow,
             borderRadius: BorderRadius.circular(4),
           ),
-          child: Text(
-            'IMDb',
-            style: textStyle,
+          child: SelectionContainer.disabled(
+            child: Text(
+              'IMDb',
+              style: textStyle,
+            ),
           ),
         ),
       ),

@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:movies_app/core/navigation/navigation.dart';
 import 'package:movies_app/core/resources/theme.dart';
 
@@ -12,6 +13,9 @@ class Application extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: AppTheme.getTheme(),
       routerConfig: AppNavigation.router,
+      localizationsDelegates: const [
+        DefaultMaterialLocalizations.delegate,
+      ],
     );
   }
 }

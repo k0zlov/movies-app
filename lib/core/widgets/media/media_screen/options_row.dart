@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:movies_app/core/widgets/buttons/round_icon_button.dart';
-import 'package:movies_app/core/widgets/media/media_screen/watch_trailer_button.dart';
+import 'package:movies_app/core/widgets/buttons/watch_trailer_button.dart';
 
 class MediaOptionsRow extends StatelessWidget {
   const MediaOptionsRow({
@@ -34,7 +34,7 @@ class _LeftSide extends StatelessWidget {
           onPressed: () {},
         ),
         const SizedBox(width: 10),
-        const MediaWatchButton(),
+        const WatchButton(),
         const SizedBox(width: 10),
         RoundIconButton(
           iconData: CupertinoIcons.add,

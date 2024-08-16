@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:movies_app/core/widgets/buttons/round_icon_button.dart';
+import 'package:movies_app/core/widgets/media/lists/card_title_option.dart';
 import 'package:movies_app/core/widgets/media/media_screen/short_info_string.dart';
 
 class CompactMediaCardInfo extends StatelessWidget {
@@ -15,34 +15,12 @@ class CompactMediaCardInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textStyle = CupertinoTheme.of(context).textTheme.textStyle;
-
     return Column(
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Expanded(
-              child: FittedBox(
-                alignment: Alignment.centerLeft,
-                fit: BoxFit.scaleDown,
-                child: Text(
-                  title,
-                  style: textStyle.copyWith(
-                    fontSize: 28,
-                  ),
-                ),
-              ),
-            ),
-            const SizedBox(width: 8),
-            RoundIconButton(
-              size: 32,
-              shouldResize: false,
-              iconData: CupertinoIcons.add,
-              onPressed: () {},
-            ),
-          ],
+        MediaCardTitleOption(
+          title: title,
+          onPressed: () {},
         ),
         ShortMediaInfoString(
           data: shortMediaStringData,

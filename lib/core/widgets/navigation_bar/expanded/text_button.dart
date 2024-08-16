@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:movies_app/core/widgets/animations/hover_scale_animation.dart';
+import 'package:movies_app/core/widgets/animations/hover/hover_scale_animation.dart';
 
 class ExpandedNavBarTextButton extends StatelessWidget {
   const ExpandedNavBarTextButton({
@@ -23,7 +23,8 @@ class ExpandedNavBarTextButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return HoverScaleAnimation(
+    return HoverAnimation(
+      scaleAnimation: true,
       child: CupertinoButton(
         onPressed: onPressed,
         padding: EdgeInsets.zero,
@@ -32,7 +33,7 @@ class ExpandedNavBarTextButton extends StatelessWidget {
             if (selected && showChevron) ...{
               const Icon(
                 CupertinoIcons.chevron_down,
-                size:  12,
+                size: 12,
                 color: CupertinoColors.white,
               ),
             },

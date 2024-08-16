@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
-import 'package:movies_app/core/widgets/animations/hover_scale_animation.dart';
+import 'package:movies_app/core/widgets/animations/hover/hover_scale_animation.dart';
 
-class MediaWatchButton extends StatelessWidget {
-  const MediaWatchButton({super.key});
+class WatchButton extends StatelessWidget {
+  const WatchButton({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -11,7 +11,8 @@ class MediaWatchButton extends StatelessWidget {
           color: CupertinoColors.black,
         );
 
-    return HoverScaleAnimation(
+    return HoverAnimation(
+      scaleAnimation: true,
       child: CupertinoButton(
         onPressed: () {},
         color: CupertinoColors.white,
@@ -21,7 +22,9 @@ class MediaWatchButton extends StatelessWidget {
           children: [
             const Icon(CupertinoIcons.play_fill),
             const SizedBox(width: 10),
-            Text('Watch trailer', style: textStyle),
+            SelectionContainer.disabled(
+              child: Text('Watch trailer', style: textStyle),
+            ),
           ],
         ),
       ),

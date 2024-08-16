@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:movies_app/core/widgets/animations/hover_scale_animation.dart';
+import 'package:movies_app/core/widgets/animations/hover/hover_scale_animation.dart';
 import 'package:movies_app/core/widgets/responsive/responsive_text.dart';
 
 class ExploreAllButton extends StatelessWidget {
@@ -19,13 +19,16 @@ class ExploreAllButton extends StatelessWidget {
           fontSize: 16.5,
         );
 
-    return HoverScaleAnimation(
+    return HoverAnimation(
+      scaleAnimation: true,
       child: CupertinoButton(
         onPressed: onPressed,
         child: Row(
           children: [
-            ResponsiveText(
-              text: Text('Explore All', style: textStyle),
+            SelectionContainer.disabled(
+              child: ResponsiveText(
+                text: Text('Explore All', style: textStyle),
+              ),
             ),
             const SizedBox(width: 4),
             Icon(CupertinoIcons.chevron_right, color: color, size: 14),

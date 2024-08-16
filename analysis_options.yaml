@@ -27,6 +27,8 @@ linter:
 
     avoid_init_to_null: true
 
+    avoid_positional_boolean_parameters: false
+
     #   Sort constructor declarations before other members.
     sort_constructors_first: true
 

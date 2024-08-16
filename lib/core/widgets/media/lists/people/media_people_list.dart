@@ -1,24 +1,26 @@
 import 'package:flutter/cupertino.dart';
-import 'package:movies_app/core/widgets/media/lists/compact/compact_media_card.dart';
 import 'package:movies_app/core/widgets/media/lists/media_list.dart';
+import 'package:movies_app/core/widgets/media/lists/people/media_people_card.dart';
 
-class CompactMediaList extends StatelessWidget {
-  const CompactMediaList({
+class MediaPeopleList extends StatelessWidget {
+  const MediaPeopleList({
     super.key,
     required this.header,
     required this.cards,
   });
 
   final String header;
-  final List<CompactMediaCardData> cards;
+
+  final List<MediaPeopleCardData> cards;
 
   @override
   Widget build(BuildContext context) {
     return MediaList(
       header: header,
+      spacing: 40,
       children: [
-        for (final CompactMediaCardData card in cards) ...{
-          CompactMediaCard(data: card),
+        for (final MediaPeopleCardData card in cards) ...{
+          MediaPeopleCard(data: card),
         },
       ],
     );

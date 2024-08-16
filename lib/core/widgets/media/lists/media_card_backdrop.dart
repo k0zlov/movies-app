@@ -1,12 +1,16 @@
 import 'package:flutter/cupertino.dart';
+import 'package:movies_app/core/network/api_endpoints.dart';
 
-class CompactMediaCardBackground extends StatelessWidget {
-  const CompactMediaCardBackground({
+class MediaCardBackdrop extends StatelessWidget {
+  const MediaCardBackdrop({
     super.key,
     required this.logo,
+    this.opacity = 0.75,
   });
 
   final String logo;
+
+  final double opacity;
 
   @override
   Widget build(BuildContext context) {
@@ -19,14 +23,14 @@ class CompactMediaCardBackground extends StatelessWidget {
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
             colors: [
-              CupertinoColors.black.withOpacity(0.75),
-              CupertinoColors.black.withOpacity(0.75),
+              CupertinoColors.black.withOpacity(opacity.clamp(0, 1)),
+              CupertinoColors.black.withOpacity(opacity.clamp(0, 1)),
             ],
             stops: const [0.0, 1.0],
           ).createShader(bounds);
         },
         child: Image.network(
-          'https://image.tmdb.org/t/p/w500/$logo',
+          '${ApiEndpoints.imageLow}/$logo',
           fit: BoxFit.fill,
         ),
       ),

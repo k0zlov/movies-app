@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:movies_app/core/resources/images.dart';
-import 'package:movies_app/core/widgets/animations/hover_scale_animation.dart';
+import 'package:movies_app/core/widgets/animations/hover/hover_scale_animation.dart';
 
 class LogoButton extends StatelessWidget {
   /// Default constructor for [LogoButton]
@@ -13,7 +13,8 @@ class LogoButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return HoverScaleAnimation(
+    return HoverAnimation(
+      scaleAnimation: true,
       scale: 1.1,
       child: CupertinoButton(
         onPressed: onPressed,

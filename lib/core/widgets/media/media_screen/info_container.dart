@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:movies_app/core/widgets/media/media_screen/backdrop.dart';
 import 'package:movies_app/core/widgets/media/media_screen/genres_string.dart';
 import 'package:movies_app/core/widgets/media/media_screen/media_description.dart';
 import 'package:movies_app/core/widgets/media/media_screen/media_logo.dart';
@@ -35,24 +36,32 @@ class MediaInfoContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: MediaQuery.of(context).size.height * .55,
-      width: double.infinity,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.end,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const MediaLogo(),
-          const SizedBox(height: 14),
-          ShortMediaInfoString(data: data.shortMediaStringData),
-          const SizedBox(height: 14),
-          MediaDescription(data.description),
-          const SizedBox(height: 40),
-          MediaOptionsRow(isAdult: data.isAdult),
-          const SizedBox(height: 14),
-          MediaGenresString(genres: data.genres),
-        ],
-      ),
+    return Stack(
+      children: [
+        const MediaBackdrop(),
+        Padding(
+          padding: const EdgeInsets.only(left: 40, top: 80),
+          child: SizedBox(
+            height: MediaQuery.of(context).size.height * .55,
+            width: double.infinity,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const MediaLogo(),
+                const SizedBox(height: 14),
+                ShortMediaInfoString(data: data.shortMediaStringData),
+                const SizedBox(height: 14),
+                MediaDescription(data.description),
+                const SizedBox(height: 40),
+                MediaOptionsRow(isAdult: data.isAdult),
+                const SizedBox(height: 14),
+                MediaGenresString(genres: data.genres),
+              ],
+            ),
+          ),
+        ),
+      ],
     );
   }
 }

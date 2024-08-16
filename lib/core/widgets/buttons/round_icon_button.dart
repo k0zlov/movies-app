@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:movies_app/core/widgets/animations/hover_scale_animation.dart';
+import 'package:movies_app/core/widgets/animations/hover/hover_scale_animation.dart';
 import 'package:movies_app/core/widgets/responsive/responsive_mixin.dart';
 
 class RoundIconButton extends StatelessWidget with Responsive<double> {
@@ -8,7 +8,7 @@ class RoundIconButton extends StatelessWidget with Responsive<double> {
     required this.onPressed,
     this.shouldResize = true,
     this.size = 45,
-    this.opacity = 0.75,
+    this.opacity = 0.4,
     this.color = CupertinoColors.darkBackgroundGray,
     super.key,
   });
@@ -36,7 +36,9 @@ class RoundIconButton extends StatelessWidget with Responsive<double> {
 
   @override
   Widget build(BuildContext context) {
-    return HoverScaleAnimation(
+    return HoverAnimation(
+      scaleAnimation: true,
+      opacityAnimation: true,
       child: CupertinoButton(
         padding: EdgeInsets.zero,
         minSize: responsive(context),
