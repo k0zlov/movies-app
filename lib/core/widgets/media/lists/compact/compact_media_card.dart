@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:movies_app/core/network/api_endpoints.dart';
 import 'package:movies_app/core/widgets/animations/hover/hover_scale_animation.dart';
 import 'package:movies_app/core/widgets/media/lists/compact/compact_media_card_info.dart';
 import 'package:movies_app/core/widgets/media/lists/media_card_backdrop.dart';
@@ -7,13 +8,13 @@ import 'package:movies_app/core/widgets/media/media_screen/short_info_string.dar
 class CompactMediaCardData {
   const CompactMediaCardData({
     required this.title,
-    required this.logoUrl,
+    required this.backdrop,
     required this.shortMediaStringData,
   });
 
   final String title;
 
-  final String logoUrl;
+  final String backdrop;
 
   final ShortMediaStringData shortMediaStringData;
 }
@@ -40,7 +41,9 @@ class CompactMediaCard extends StatelessWidget {
               onPressed: () {},
               padding: EdgeInsets.zero,
               pressedOpacity: 0.7,
-              child: MediaCardBackdrop(logo: data.logoUrl),
+              child: MediaCardBackdrop(
+                pictureUrl: '${ApiEndpoints.imageLow}/${data.backdrop}',
+              ),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(

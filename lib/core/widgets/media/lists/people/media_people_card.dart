@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:movies_app/core/widgets/animations/hover/hover_scale_animation.dart';
 import 'package:movies_app/core/widgets/media/lists/people/media_people_picture.dart';
 
 class MediaPeopleCardData {
@@ -42,38 +43,41 @@ class MediaPeopleCard extends StatelessWidget{
     }
     final textStyle = CupertinoTheme.of(context).textTheme.textStyle;
 
-    return CupertinoButton(
-      onPressed: () {},
-      padding: EdgeInsets.zero,
-      child: SizedBox(
-        height: 240,
-        width: 170,
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            MediaPeoplePicture(picture: data.picture),
-            const SizedBox(height: 6),
-            Text(
-              '$firstLine\n$secondLine',
-              maxLines: 2,
-              textAlign: TextAlign.center,
-              overflow: TextOverflow.ellipsis,
-              style: textStyle.copyWith(
-                fontSize: 19,
-              ),
-            ),
-            if (data.role != null) ...{
+    return HoverAnimation(
+      scaleAnimation: true,
+      child: CupertinoButton(
+        onPressed: () {},
+        padding: EdgeInsets.zero,
+        child: SizedBox(
+          height: 240,
+          width: 170,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              MediaPeoplePicture(picture: data.picture),
+              const SizedBox(height: 6),
               Text(
-                data.role!,
+                '$firstLine\n$secondLine',
                 maxLines: 2,
                 textAlign: TextAlign.center,
                 overflow: TextOverflow.ellipsis,
                 style: textStyle.copyWith(
-                  color: CupertinoColors.systemGrey,
+                  fontSize: 19,
                 ),
               ),
-            },
-          ],
+              if (data.role != null) ...{
+                Text(
+                  data.role!,
+                  maxLines: 2,
+                  textAlign: TextAlign.center,
+                  overflow: TextOverflow.ellipsis,
+                  style: textStyle.copyWith(
+                    color: CupertinoColors.systemGrey,
+                  ),
+                ),
+              },
+            ],
+          ),
         ),
       ),
     );

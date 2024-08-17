@@ -1,14 +1,16 @@
 import 'package:flutter/cupertino.dart';
-import 'package:movies_app/core/network/api_endpoints.dart';
 
 class MediaCardBackdrop extends StatelessWidget {
   const MediaCardBackdrop({
     super.key,
-    required this.logo,
+    required this.pictureUrl,
     this.opacity = 0.75,
+    this.fit = BoxFit.fill,
   });
 
-  final String logo;
+  final BoxFit fit;
+
+  final String pictureUrl;
 
   final double opacity;
 
@@ -30,8 +32,8 @@ class MediaCardBackdrop extends StatelessWidget {
           ).createShader(bounds);
         },
         child: Image.network(
-          '${ApiEndpoints.imageLow}/$logo',
-          fit: BoxFit.fill,
+          pictureUrl,
+          fit: fit,
         ),
       ),
     );

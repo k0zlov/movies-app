@@ -14,9 +14,9 @@ class MediaBackdrop extends StatelessWidget {
           end: Alignment.bottomCenter,
           colors: [
             CupertinoColors.transparent,
-            CupertinoColors.black.withOpacity(0.5),
+            CupertinoColors.black.withOpacity(0.6),
             CupertinoColors.black,
-            CupertinoColors.black.withOpacity(0.5),
+            CupertinoColors.black.withOpacity(0.6),
             CupertinoColors.transparent,
           ],
           stops: const [0.0, 0.2, 0.4, 0.8, 1.0],

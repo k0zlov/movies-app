@@ -20,6 +20,7 @@ class MediaScreen extends StatelessWidget {
         child: CupertinoScrollbar(
           child: SingleChildScrollView(
             primary: true,
+            physics: const BouncingScrollPhysics(),
             child: Column(
               children: [
                 MediaInfoContainer(data: data),
