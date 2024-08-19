@@ -16,6 +16,7 @@ class MediaGenresString extends StatelessWidget {
         );
 
     return Row(
+      mainAxisSize: MainAxisSize.min,
       children: [
         for (int i = 0; i < genres.length; i++) ...{
           Text(genres[i], style: textStyle),

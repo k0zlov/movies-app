@@ -4,8 +4,8 @@ import 'package:movies_app/core/widgets/animations/hover/hover_scale_animation.d
 import 'package:movies_app/core/widgets/media/lists/card_title_option.dart';
 import 'package:movies_app/core/widgets/media/lists/media_card_backdrop.dart';
 import 'package:movies_app/core/widgets/media/lists/media_card_description.dart';
-import 'package:movies_app/core/widgets/media/media_screen/genres_string.dart';
-import 'package:movies_app/core/widgets/media/media_screen/short_info_string.dart';
+import 'package:movies_app/core/widgets/media/screen_headers/main_info_header/genres_string.dart';
+import 'package:movies_app/core/widgets/media/screen_headers/main_info_header/short_info_string.dart';
 import 'package:movies_app/core/widgets/responsive/responsive_mixin.dart';
 
 class ExpandedMediaCardData {

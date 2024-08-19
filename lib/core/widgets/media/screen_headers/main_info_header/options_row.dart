@@ -1,22 +1,29 @@
 import 'package:flutter/cupertino.dart';
 import 'package:movies_app/core/widgets/buttons/round_icon_button.dart';
-import 'package:movies_app/core/widgets/buttons/watch_trailer_button.dart';
+import 'package:movies_app/core/widgets/buttons/main_option_button.dart';
 
 class MediaOptionsRow extends StatelessWidget {
   const MediaOptionsRow({
     super.key,
     required this.isAdult,
+    this.showRightSide = true,
   });
 
   final bool isAdult;
 
+  final bool showRightSide;
+
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         const _LeftSide(),
-        _RightSide(isAdult: isAdult),
+        if (showRightSide) ...{
+          const Spacer(),
+          _RightSide(isAdult: isAdult),
+        },
       ],
     );
   }
@@ -28,21 +35,21 @@ class _LeftSide extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisSize: MainAxisSize.min,
       children: [
         RoundIconButton(
           iconData: CupertinoIcons.heart,
           onPressed: () {},
         ),
         const SizedBox(width: 10),
-        const WatchButton(),
-        const SizedBox(width: 10),
-        RoundIconButton(
-          iconData: CupertinoIcons.add,
+        MainOptionButton(
           onPressed: () {},
+          iconData: CupertinoIcons.play_fill,
+          title: 'Watch trailer',
         ),
         const SizedBox(width: 10),
         RoundIconButton(
-          iconData: CupertinoIcons.play,
+          iconData: CupertinoIcons.add,
           onPressed: () {},
         ),
       ],

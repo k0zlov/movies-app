@@ -3,7 +3,7 @@ import 'package:movies_app/core/network/api_endpoints.dart';
 import 'package:movies_app/core/widgets/animations/hover/hover_scale_animation.dart';
 import 'package:movies_app/core/widgets/media/lists/compact/compact_media_card_info.dart';
 import 'package:movies_app/core/widgets/media/lists/media_card_backdrop.dart';
-import 'package:movies_app/core/widgets/media/media_screen/short_info_string.dart';
+import 'package:movies_app/core/widgets/media/screen_headers/main_info_header/short_info_string.dart';
 
 class CompactMediaCardData {
   const CompactMediaCardData({

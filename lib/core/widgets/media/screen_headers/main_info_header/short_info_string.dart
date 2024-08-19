@@ -25,6 +25,7 @@ class ShortMediaInfoString extends StatelessWidget {
     return DefaultTextStyle(
       style: CupertinoTheme.of(context).textTheme.textStyle,
       child: Row(
+        mainAxisSize: MainAxisSize.min,
         children: [
           ImdbLogoButton(onPressed: () {}),
           const SizedBox(width: 2),

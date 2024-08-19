@@ -70,25 +70,25 @@ class _ScrollMediaList extends StatelessWidget with Responsive<double> {
 
   @override
   Widget build(BuildContext context) {
-    return AnimatedScale(
-      duration: const Duration(milliseconds: 220),
-      scale: responsive(context),
-      child: SingleChildScrollView(
-        scrollDirection: Axis.horizontal,
-        clipBehavior: Clip.none,
-        child: Row(
-          children: [
-            const SizedBox(width: 20),
-            for (final Widget child in children) ...{
-              Padding(
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      clipBehavior: Clip.none,
+      child: Row(
+        children: [
+          const SizedBox(width: 20),
+          for (final Widget child in children) ...{
+            AnimatedScale(
+              duration: const Duration(milliseconds: 220),
+              scale: responsive(context),
+              child: Padding(
                 padding: const EdgeInsets.only(bottom: 15),
                 child: child,
               ),
-              SizedBox(width: spacing),
-            },
-            const SizedBox(width: 20),
-          ],
-        ),
+            ),
+            SizedBox(width: spacing),
+          },
+          const SizedBox(width: 20),
+        ],
       ),
     );
   }

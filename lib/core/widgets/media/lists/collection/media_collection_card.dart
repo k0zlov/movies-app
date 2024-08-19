@@ -4,8 +4,8 @@ import 'package:movies_app/core/widgets/animations/hover/hover_scale_animation.d
 import 'package:movies_app/core/widgets/media/lists/card_title_option.dart';
 import 'package:movies_app/core/widgets/media/lists/media_card_backdrop.dart';
 import 'package:movies_app/core/widgets/media/lists/media_card_description.dart';
-import 'package:movies_app/core/widgets/media/media_screen/genres_string.dart';
-import 'package:movies_app/core/widgets/media/media_screen/short_info_string.dart';
+import 'package:movies_app/core/widgets/media/screen_headers/main_info_header/genres_string.dart';
+import 'package:movies_app/core/widgets/media/screen_headers/main_info_header/short_info_string.dart';
 
 class MediaCollectionCardData {
   const MediaCollectionCardData({
@@ -61,9 +61,11 @@ class MediaCollectionCard extends StatelessWidget {
               onPressed: () {},
               padding: const EdgeInsets.all(12),
               child: Column(
+                mainAxisSize: MainAxisSize.min,
                 children: [
                   MediaCardBackdrop(
                     pictureUrl: '${ApiEndpoints.imageLow}/${data.poster}',
+                    fit: BoxFit.fitHeight,
                   ),
                   const SizedBox(height: 230),
                 ],
@@ -72,6 +74,7 @@ class MediaCollectionCard extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(12),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const SizedBox(height: 410),
                   MediaCardTitleOption(

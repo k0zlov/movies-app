@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
 import 'package:movies_app/application.dart';
 import 'package:movies_app/core/widgets/navigation_bar/navigation_bar_delegate.dart';
-import 'package:movies_app/features/home/view/screens/home_screen.dart';
+import 'package:movies_app/features/home/view/screens/profile_screen.dart';
 
 class ScreenFactory {
   ScreenFactory._();
@@ -18,6 +18,6 @@ class ScreenFactory {
   }
 
   static Widget renderHomeScreen() {
-    return const HomeScreen();
+    return const ProfileScreen();
   }
 }
