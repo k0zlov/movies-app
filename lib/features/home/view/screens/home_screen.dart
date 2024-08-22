@@ -27,7 +27,7 @@ class HomeScreen extends StatelessWidget {
                   data: MainMediaInfoHeaderData(
                     isAdult: true,
                     genres: ['Animation', 'Action', 'Adventure'],
-                    backdrop: 'logoUrl',
+                    backdrop: '/rkB4LyZHo1NHXFEDHl9vSD9r1lI.jpg',
                     logo: 'logoUrl',
                     description:
                         "An aspiring utopian regime clashes with a violent radical underground. At the heart of this revolution of magic and tech, a family's bond is tested",

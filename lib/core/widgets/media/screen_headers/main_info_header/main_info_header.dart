@@ -50,7 +50,7 @@ class MainMediaInfoHeader extends StatelessWidget with Responsive<bool> {
 
     return Stack(
       children: [
-        const MediaBackdrop(),
+        MediaBackdrop(picture: data.backdrop),
         Padding(
           padding: EdgeInsets.only(left: small ? 0 : 40, top: 80, bottom: 15),
           child: SizedBox(
@@ -61,11 +61,11 @@ class MainMediaInfoHeader extends StatelessWidget with Responsive<bool> {
               crossAxisAlignment:
                   small ? CrossAxisAlignment.center : CrossAxisAlignment.start,
               children: [
-                const MediaLogo(),
+                const MediaLogo(logo: '/jXLNOzeEA8AoJy92dJTUUZXTMxK.png'),
                 const SizedBox(height: 14),
                 ShortMediaInfoString(data: data.shortMediaStringData),
                 const SizedBox(height: 14),
-                MediaDescription(
+                MainMediaHeaderDescription(
                   data.description,
                   textAlign: small ? TextAlign.center : TextAlign.left,
                 ),

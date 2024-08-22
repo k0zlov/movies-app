@@ -1,13 +1,8 @@
 import 'package:flutter/cupertino.dart';
-import 'package:movies_app/core/network/api_endpoints.dart';
+import 'package:movies_app/core/resources/images.dart';
 
-class MediaBackdrop extends StatelessWidget {
-  const MediaBackdrop({
-    super.key,
-    required this.picture,
-  });
-
-  final String picture;
+class AuthBackdrop extends StatelessWidget {
+  const AuthBackdrop({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -27,8 +22,8 @@ class MediaBackdrop extends StatelessWidget {
           stops: const [0.0, 0.2, 0.4, 0.8, 1.0],
         ).createShader(bounds);
       },
-      child: Image.network(
-        '${ApiEndpoints.imageLarge}/$picture',
+      child: Image.asset(
+        AppImages.authBackdrop,
         width: double.infinity,
         height: MediaQuery.of(context).size.height * .68,
         fit: BoxFit.cover,

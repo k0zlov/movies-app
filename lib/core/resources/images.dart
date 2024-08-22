@@ -10,4 +10,6 @@ class AppImages {
   static const arcaneLogo = '$path/arcane_logo.png';
 
   static const imdbLogo = '$path/imdb_logo.png';
+
+  static const authBackdrop = '$path/auth_backdrop.jpg';
 }

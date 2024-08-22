@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:movies_app/core/widgets/responsive/responsive_mixin.dart';
 import 'package:movies_app/core/widgets/responsive/responsive_text.dart';
 
-class MediaDescription extends StatelessWidget with Responsive<double> {
-  const MediaDescription(
+class MainMediaHeaderDescription extends StatelessWidget with Responsive<double> {
+  const MainMediaHeaderDescription(
     this.description, {
     super.key,
     this.textAlign = TextAlign.left,

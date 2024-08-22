@@ -1,39 +1,32 @@
 import 'package:flutter/cupertino.dart';
-import 'package:movies_app/core/resources/images.dart';
-import 'package:movies_app/core/widgets/responsive/responsive_layout.dart';
+import 'package:movies_app/core/network/api_endpoints.dart';
+import 'package:movies_app/core/widgets/responsive/responsive_mixin.dart';
 
-class MediaLogo extends StatelessWidget {
-  const MediaLogo({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const ResponsiveLayout(
-      small: _ResponsiveMediaLogo(
-        size: 55,
-      ),
-      medium: _ResponsiveMediaLogo(
-        size: 65,
-      ),
-      large: _ResponsiveMediaLogo(
-        size: 85,
-      ),
-    );
-  }
-}
-
-class _ResponsiveMediaLogo extends StatelessWidget {
-  const _ResponsiveMediaLogo({
-    required this.size,
+class MediaLogo extends StatelessWidget with Responsive<double> {
+  const MediaLogo({
+    super.key,
+    required this.logo,
+    this.width = 200,
   });
 
-  final double size;
+  final double width;
+  final String logo;
+
+  @override
+  double get small => 0.85;
+
+  @override
+  double get medium => 0.95;
+
+  @override
+  double get large => 1;
 
   @override
   Widget build(BuildContext context) {
-    return Image.asset(
-      AppImages.arcaneLogo,
-      height: size,
-      fit: BoxFit.scaleDown,
+    return Image.network(
+      '${ApiEndpoints.imageLow}/$logo',
+      width: width * responsive(context),
+      fit: BoxFit.cover,
     );
   }
 }
