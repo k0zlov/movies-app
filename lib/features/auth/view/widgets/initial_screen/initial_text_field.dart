@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 
-class AuthTextField extends StatelessWidget {
-  const AuthTextField({super.key});
+class InitialScreenTextField extends StatelessWidget {
+  const InitialScreenTextField({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +26,7 @@ class AuthTextField extends StatelessWidget {
           placeholder: 'Email address',
           placeholderStyle: textStyle,
           style: textStyle.copyWith(
-            color: CupertinoColors.black.withOpacity(0.8),
+            color: CupertinoColors.black.withOpacity(0.9),
           ),
         ),
       ),

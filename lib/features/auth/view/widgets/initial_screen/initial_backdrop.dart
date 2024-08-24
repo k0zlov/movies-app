@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:movies_app/core/resources/images.dart';
 
-class AuthBackdrop extends StatelessWidget {
-  const AuthBackdrop({super.key});
+class InitialScreenBackdrop extends StatelessWidget {
+  const InitialScreenBackdrop({super.key});
 
   @override
   Widget build(BuildContext context) {

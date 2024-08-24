@@ -1,9 +1,11 @@
 import 'package:flutter/cupertino.dart';
+import 'package:go_router/go_router.dart';
+import 'package:movies_app/core/navigation/routes.dart';
 import 'package:movies_app/core/widgets/buttons/logo_button.dart';
-import 'package:movies_app/features/auth/view/widgets/auth_button.dart';
+import 'package:movies_app/features/auth/view/widgets/initial_screen/initial_button.dart';
 
-class AuthAppBar extends StatelessWidget {
-  const AuthAppBar({super.key});
+class InitialScreenAppBar extends StatelessWidget {
+  const InitialScreenAppBar({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,9 +19,9 @@ class AuthAppBar extends StatelessWidget {
             LogoButton(
               onPressed: () {},
             ),
-            AuthButton(
+            InitialScreenButton(
               title: 'Sign in',
-              onPressed: () {},
+              onPressed: () => context.goNamed(AppRoutes.login.name),
             ),
           ],
         ),

@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:movies_app/core/widgets/media/screen_headers/main_info_header/main_info_header.dart';
 import 'package:movies_app/core/widgets/media/slider/media_page_slide.dart';
 import 'package:movies_app/core/widgets/media/slider/media_slider_button.dart';
+import 'package:movies_app/core/widgets/responsive/responsive_mixin.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class MediaPageSlider extends StatefulWidget {
@@ -16,7 +17,8 @@ class MediaPageSlider extends StatefulWidget {
   State<MediaPageSlider> createState() => _MediaPageSliderState();
 }
 
-class _MediaPageSliderState extends State<MediaPageSlider> {
+class _MediaPageSliderState extends State<MediaPageSlider>
+    with Responsive<double> {
   final Duration _duration = const Duration(milliseconds: 220);
   final Curve _curve = Curves.easeInOut;
   final _controller = PageController();
@@ -53,13 +55,21 @@ class _MediaPageSliderState extends State<MediaPageSlider> {
   }
 
   @override
+  double get small => .75;
+
+  @override
+  double? get large => .85;
+
+  @override
   Widget build(BuildContext context) {
+    final Size size = MediaQuery.of(context).size;
+
     return Column(
       children: [
         ConstrainedBox(
-          constraints: const BoxConstraints(minHeight: 300, maxHeight: 850),
+          constraints: const BoxConstraints(minHeight: 300, maxHeight: 1000),
           child: SizedBox(
-            height: MediaQuery.of(context).size.height * 0.75,
+            height: size.height * responsive(context),
             child: PageView.builder(
               controller: _controller,
               itemCount: widget.data.length,
@@ -71,7 +81,9 @@ class _MediaPageSliderState extends State<MediaPageSlider> {
         ),
         const SizedBox(height: 8),
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 50),
+          padding: EdgeInsets.symmetric(
+            horizontal: size.width * 0.05,
+          ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [

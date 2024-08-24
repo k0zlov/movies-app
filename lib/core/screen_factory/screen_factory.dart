@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
 import 'package:movies_app/application.dart';
 import 'package:movies_app/core/widgets/navigation_bar/navigation_bar_delegate.dart';
-import 'package:movies_app/features/auth/view/screens/auth_screen.dart';
+import 'package:movies_app/features/auth/view/screens/initial_screen.dart';
 import 'package:movies_app/features/auth/view/screens/confirmation_screen.dart';
 import 'package:movies_app/features/auth/view/screens/login_screen.dart';
 import 'package:movies_app/features/auth/view/screens/registration_screen.dart';
@@ -15,8 +15,8 @@ class ScreenFactory {
     return const Application();
   }
 
-  static Widget renderAuthScreen() {
-    return const AuthScreen();
+  static Widget renderInitialScreen() {
+    return const InitialScreen();
   }
 
   static Widget renderRegistrationScreen() {

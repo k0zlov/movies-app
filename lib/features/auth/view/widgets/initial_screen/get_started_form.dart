@@ -1,9 +1,11 @@
 import 'package:flutter/cupertino.dart';
-import 'package:movies_app/features/auth/view/widgets/auth_button.dart';
-import 'package:movies_app/features/auth/view/widgets/auth_screen/auth_text_field.dart';
+import 'package:go_router/go_router.dart';
+import 'package:movies_app/core/navigation/routes.dart';
+import 'package:movies_app/features/auth/view/widgets/initial_screen/initial_button.dart';
+import 'package:movies_app/features/auth/view/widgets/initial_screen/initial_text_field.dart';
 
-class AuthRegistrationForm extends StatelessWidget {
-  const AuthRegistrationForm({super.key});
+class GetStartedForm extends StatelessWidget {
+  const GetStartedForm({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -50,11 +52,13 @@ class AuthRegistrationForm extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const AuthTextField(),
+                    const InitialScreenTextField(),
                     const SizedBox(width: 10),
-                    AuthButton(
+                    InitialScreenButton(
                       title: 'Get started',
-                      onPressed: () {},
+                      onPressed: () => context.goNamed(
+                        AppRoutes.registration.name,
+                      ),
                     ),
                   ],
                 ),

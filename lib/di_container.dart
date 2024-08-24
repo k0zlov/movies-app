@@ -1,3 +1,3 @@
-Future<void> registerDependencies() async {
+import 'dart:async';
 
-}
+Future<void> registerDependencies() async {}

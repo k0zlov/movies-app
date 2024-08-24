@@ -25,7 +25,7 @@ class AppNavigation {
         path: AppRoutes.auth.path,
         name: AppRoutes.auth.name,
         builder: (context, state) {
-          return ScreenFactory.renderAuthScreen();
+          return ScreenFactory.renderInitialScreen();
         },
         routes: [
           GoRoute(

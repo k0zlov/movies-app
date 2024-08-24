@@ -3,8 +3,8 @@ import 'package:movies_app/core/widgets/media/screen_headers/main_info_header/ma
 import 'package:movies_app/core/widgets/media/screen_headers/main_info_header/short_info_string.dart';
 import 'package:movies_app/core/widgets/media/slider/media_page_slider.dart';
 
-class AuthMediaSlider extends StatelessWidget {
-  const AuthMediaSlider({super.key});
+class InitialMediaSlider extends StatelessWidget {
+  const InitialMediaSlider({super.key});
 
   @override
   Widget build(BuildContext context) {
