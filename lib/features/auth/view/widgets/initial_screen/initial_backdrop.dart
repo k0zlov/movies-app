@@ -24,7 +24,7 @@ class InitialScreenBackdrop extends StatelessWidget {
       },
       child: Image.asset(
         AppImages.authBackdrop,
-        width: double.infinity,
+        width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height * .68,
         fit: BoxFit.cover,
       ),

@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:movies_app/features/auth/view/widgets/initial_screen/initial_backdrop.dart';
 import 'package:movies_app/features/auth/view/widgets/initial_screen/get_started_form.dart';
 import 'package:movies_app/features/auth/view/widgets/initial_screen/initial_app_bar.dart';
+import 'package:movies_app/features/auth/view/widgets/initial_screen/initial_backdrop.dart';
 import 'package:movies_app/features/auth/view/widgets/initial_screen/initial_media_list.dart';
 import 'package:movies_app/features/auth/view/widgets/initial_screen/initial_media_slider.dart';
 
