@@ -21,7 +21,9 @@ class Application extends StatelessWidget {
         return Overlay(
           initialEntries: [
             OverlayEntry(
-              builder: (context) => SelectionArea(child: ErrorScreenWrapper(child: child)),
+              builder: (context) => SelectionArea(
+                child: ErrorScreenWrapper(child: child),
+              ),
             ),
           ],
         );

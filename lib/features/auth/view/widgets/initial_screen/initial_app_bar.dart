@@ -1,9 +1,7 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:movies_app/core/navigation/routes.dart';
 import 'package:movies_app/core/widgets/buttons/logo_button.dart';
-import 'package:movies_app/features/auth/view/cubit/auth_cubit.dart';
 import 'package:movies_app/features/auth/view/widgets/initial_screen/initial_button.dart';
 
 class InitialScreenAppBar extends StatelessWidget {
@@ -19,7 +17,7 @@ class InitialScreenAppBar extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             LogoButton(
-              onPressed: context.read<AuthCubit>().test,
+              onPressed: () {},
             ),
             InitialScreenButton(
               title: 'Sign in',

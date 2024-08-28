@@ -1,11 +1,22 @@
 import 'package:flutter/cupertino.dart';
+import 'package:movies_app/features/auth/view/widgets/auth_text_field_suffix.dart';
 
 class AuthTextField extends StatefulWidget {
   const AuthTextField({
     super.key,
     required this.title,
+    required this.onChanged,
+    required this.text,
     this.obscure = false,
+    this.message = '',
+    this.suffixState = AuthTextFieldSuffixState.empty,
   });
+
+  final String text;
+  final void Function(String text) onChanged;
+
+  final String message;
+  final AuthTextFieldSuffixState suffixState;
 
   final String title;
   final bool obscure;
@@ -15,7 +26,6 @@ class AuthTextField extends StatefulWidget {
 }
 
 class _AuthTextFieldState extends State<AuthTextField> {
-  String _text = '';
   bool _expand = true;
   bool _hover = false;
 
@@ -26,15 +36,19 @@ class _AuthTextFieldState extends State<AuthTextField> {
 
   @override
   void initState() {
-    _controller.addListener(_controllerListener);
+    _controller
+      ..text = widget.text
+      ..addListener(_refreshExpand);
     _focusNode.addListener(_refreshExpand);
 
     super.initState();
+
+    _refreshExpand();
   }
 
   @override
   void dispose() {
-    _controller.removeListener(_controllerListener);
+    _controller.removeListener(_refreshExpand);
     _focusNode.removeListener(_refreshExpand);
 
     _controller.dispose();
@@ -50,20 +64,8 @@ class _AuthTextFieldState extends State<AuthTextField> {
     setState(() {});
   }
 
-  void _controllerListener() {
-    _onTextChanged();
-    _refreshExpand();
-  }
-
-  void _onTextChanged() {
-    if (_text == _controller.text) return;
-
-    _text = _controller.text;
-    setState(() {});
-  }
-
   void _refreshExpand() {
-    final bool shouldExpand = !_focusNode.hasFocus && _text.isEmpty;
+    final bool shouldExpand = !_focusNode.hasFocus && widget.text.isEmpty;
 
     if (_expand == shouldExpand) return;
 
@@ -108,11 +110,18 @@ class _AuthTextFieldState extends State<AuthTextField> {
               style: textStyle,
               controller: _controller,
               focusNode: _focusNode,
+              onChanged: widget.onChanged,
               obscureText: widget.obscure,
+              suffix: widget.suffixState.isEmpty
+                  ? const SizedBox()
+                  : AuthTextFieldSuffix(
+                      state: widget.suffixState,
+                      message: widget.message,
+                    ),
               placeholderStyle: textStyle.copyWith(
                 color: CupertinoColors.black.withOpacity(0.65),
               ),
-              padding: const EdgeInsets.only(top: 18, left: 10),
+              padding: const EdgeInsets.only(top: 16, left: 10),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(5),
                 border: Border.fromBorderSide(

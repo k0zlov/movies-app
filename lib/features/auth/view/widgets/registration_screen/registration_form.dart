@@ -1,4 +1,6 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movies_app/features/auth/view/cubit/auth_cubit.dart';
 import 'package:movies_app/features/auth/view/widgets/auth_button.dart';
 import 'package:movies_app/features/auth/view/widgets/auth_text_field.dart';
 
@@ -7,6 +9,9 @@ class RegistrationForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final AuthCubit cubit = context.read<AuthCubit>();
+    final AuthState state = context.select((AuthCubit cubit) => cubit.state);
+
     final textStyle = CupertinoTheme.of(context).textTheme.textStyle.copyWith(
           color: CupertinoColors.black.withOpacity(0.75),
         );
@@ -38,17 +43,37 @@ class RegistrationForm extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 16),
-        const AuthTextField(
+        AuthTextField(
+          text: state.email,
+          message: state.emailFieldMessage,
+          suffixState: state.emailFieldState,
+          onChanged: cubit.onEmailChanged,
           title: 'Email',
         ),
         const SizedBox(height: 8),
-        const AuthTextField(title: 'Create a password', obscure: true),
+        AuthTextField(
+          text: state.registerPassword,
+          onChanged: cubit.onRegisterPassChanged,
+          title: 'Create a password',
+          suffixState: state.passFieldState,
+          message: state.passFieldMessage,
+          obscure: true,
+        ),
         const SizedBox(height: 8),
-        const AuthTextField(title: 'Repeat new password', obscure: true),
+        AuthTextField(
+          text: state.repeatPassword,
+          onChanged: cubit.onRepeatPassChanged,
+          title: 'Repeat new password',
+          message: state.repeatPassFieldMessage,
+          suffixState: state.repeatPassFieldState,
+          obscure: true,
+        ),
         const SizedBox(height: 16),
         AuthButton(
           title: 'Register',
-          active: false,
+          active: state.emailFieldState.isSuccess &&
+              state.passFieldState.isSuccess &&
+              state.repeatPassFieldState.isSuccess,
           onPressed: () {},
         ),
       ],

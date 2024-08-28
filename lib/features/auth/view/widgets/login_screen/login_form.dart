@@ -1,4 +1,6 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movies_app/features/auth/view/cubit/auth_cubit.dart';
 import 'package:movies_app/features/auth/view/widgets/auth_button.dart';
 import 'package:movies_app/features/auth/view/widgets/auth_text_field.dart';
 
@@ -7,6 +9,9 @@ class LoginForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final AuthCubit cubit = context.read<AuthCubit>();
+    final AuthState state = context.select((AuthCubit cubit) => cubit.state);
+
     final textStyle = CupertinoTheme.of(context).textTheme.textStyle.copyWith(
           color: CupertinoColors.black.withOpacity(0.75),
         );
@@ -35,12 +40,25 @@ class LoginForm extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 16),
-          const AuthTextField(title: 'Email'),
+          AuthTextField(
+            text: state.email,
+            onChanged: cubit.onEmailChanged,
+            title: 'Email',
+            suffixState: state.loginEmailFieldState,
+            message: state.loginEmailMessage,
+          ),
           const SizedBox(height: 8),
-          const AuthTextField(title: 'Enter a password', obscure: true),
+          AuthTextField(
+            text: state.loginPassword,
+            onChanged: cubit.onLoginPassChanged,
+            title: 'Enter a password',
+            obscure: true,
+          ),
           const SizedBox(height: 16),
           AuthButton(
             title: 'Sign in',
+            active: state.loginEmailFieldState.isSuccess &&
+                state.loginPassword.isNotEmpty,
             onPressed: () {},
           ),
         ],
